@@ -4,7 +4,7 @@ pipeline {
         pollSCM ('* * * * *')
     }
     environment {
-        registry = "account_id.dkr.ecr.us-west-1.amazonaws.com/aws-docker-repo"
+        registry = "855879423727.dkr.ecr.us-west-1.amazonaws.com/aws-docker-repo"
     }
     stages {
         stage('SCM') {
@@ -28,8 +28,8 @@ pipeline {
         stage('Pushing to ECR') {
             steps{  
                 script {
-                    sh 'aws ecr get-login-password --region us-west-1 | docker login --username AWS --password-stdin aws-docker-repo.dkr.ecr.us-west-1.amazonaws.com'
-                    sh 'docker push account_id.dkr.ecr.us-west-1.amazonaws.com/aws-docker-repo:latest'
+                    sh 'aws ecr get-login-password --region us-west-1 | docker login --username AWS --password-stdin 855879423727.dkr.ecr.us-west-1.amazonaws.com'
+                    sh 'docker push 855879423727.dkr.ecr.us-west-1.amazonaws.com/aws-docker-repo:latest'
                 }
              }
         }

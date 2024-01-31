@@ -9,8 +9,8 @@ pipeline {
     stages {
         stage('SCM') {
             steps {
-                git branch: 'dev',
-                url: 'https://github.com/shashikamle99/scenario-1-cicd.git'
+                git branch: 'main',
+                url: 'https://github.com/shashikamle99/scenario-2-cicd.git'
             }
         }
         stage('Build package') {

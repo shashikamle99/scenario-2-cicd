@@ -10,6 +10,11 @@ spec:
   selector:
     matchLabels:
       app: java-app
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1    
   template:
     metadata:
       labels:
@@ -23,20 +28,3 @@ spec:
         - containerPort: 8080
           name: http
           protocol: TCP
-# service type loadbalancer       
----
-apiVersion: v1
-kind: Service
-metadata:
-  labels:
-    app: java-app
-  name: java-app
-spec:
-  ports:
-  - name: http
-    port: 80
-    protocol: TCP
-    targetPort: 8080
-  type: LoadBalancer
-  selector:
-    app: java-app

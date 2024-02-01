@@ -32,7 +32,7 @@ pipeline {
                 junit '**/target/surefire-reports/TEST-*.xml'
             }
         }
-        
+
         stage('Build image') {
             steps {
                 script {
@@ -53,6 +53,8 @@ pipeline {
                 script {
                     withKubeConfig([credentialsId: 'K8S-config', serverUrl: '']) {
                     sh ('kubectl apply -f  java-app.yml')
+                    sh ('kubectl apply -f  alb-service.yml')
+
                     }
                 }
             }

@@ -1,8 +1,8 @@
 pipeline {
     agent any
-    triggers {
-        pollSCM ('* * * * *')
-    }
+    // triggers {
+    //     pollSCM ('* * * * *')
+    // }
     environment {
         registry = "855879423727.dkr.ecr.us-west-1.amazonaws.com/aws-docker-repo"
     }

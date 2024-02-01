@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('SCM') {
             steps {
-                git branch: 'main',
+                git branch: 'dev',
                 url: 'https://github.com/shashikamle99/scenario-2-cicd.git'
             }
         }
@@ -18,6 +18,21 @@ pipeline {
                 sh "mvn clean package"
             }
         }
+
+        stage('SonarQube Analysis') {
+          steps {
+              withSonarQubeEnv('SONAR_CLOUD') {
+                sh "mvn sonar:sonar -Dsonar.projectKey=java-project-demo -Dsonar.organization=java-project-demo -Dsonar.token=a64e938e4479814e8dd3a080e2b085270f7d884b"
+                }
+            } 
+        }
+
+        stage('Junit Reports') {
+            steps {
+                junit '**/target/surefire-reports/TEST-*.xml'
+            }
+        }
+        
         stage('Build image') {
             steps {
                 script {

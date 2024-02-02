@@ -22,7 +22,7 @@ pipeline {
         stage('SonarQube Analysis') {
           steps {
               withSonarQubeEnv('SONAR_CLOUD') {
-                sh "mvn sonar:sonar -Dsonar.projectKey=java-project-demo -Dsonar.organization=java-project-demo -Dsonar.token=a64e938e4479814e8dd3a080e2b085270f7d884b"
+                sh "mvn sonar:sonar -Dsonar.projectKey=java-project-demo -Dsonar.organization=java-project-demo -Dsonar.token=f240b887c2046b6180d38e174df58002e2bfa54d"
                 }
             } 
         }
